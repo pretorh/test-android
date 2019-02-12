@@ -2,14 +2,24 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def getVersionCode = { ->
+    // get the version code when -PversionCode=... is passed on the command line
+    return project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+}
+
+def getVersionName = { ->
+    // get the version name when -PversionName=... is passed on the command line
+    return project.hasProperty('versionName') ? versionName : "1.0.0"
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.pretorh.myapplication"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode getVersionCode()
+        versionName getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
