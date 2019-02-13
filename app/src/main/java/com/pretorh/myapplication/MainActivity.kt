@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG by lazy { this.javaClass.simpleName }
@@ -14,5 +15,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "MainActivity.onCreate")
 
         val model = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        textView.text = model.r.toString()
     }
 }
