@@ -20,5 +20,9 @@ class MainActivity : AppCompatActivity() {
         textView.text = model.r.toString()
 
         model.currentName.observe(this, Observer<String> { name -> textView2.text = name })
+        btn_set_name.setOnClickListener {
+            val name = editText.text.toString()
+            model.currentName.value = name
+        }
     }
 }
