@@ -33,5 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         model.firstName.observe(this, Observer<String> { name -> textViewFirstNameFromRepository.text = name })
+
+        button_delete.setOnClickListener { model.clearFirstName() }
     }
 }

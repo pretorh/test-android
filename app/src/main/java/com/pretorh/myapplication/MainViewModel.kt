@@ -30,6 +30,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         executor.submit { repository.setUserFirstName(name) }
     }
 
+    fun clearFirstName() {
+        executor.submit { repository.clearUserFirstName() }
+    }
+
     companion object {
         val TAG: String by lazy { MainViewModel::class.java.simpleName }
     }

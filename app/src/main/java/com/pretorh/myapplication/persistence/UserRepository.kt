@@ -15,4 +15,9 @@ class UserRepository(private val userDao: UserDao) {
     fun setUserFirstName(firstName: String) {
         userDao.insert(User(1, firstName))
     }
+
+    @WorkerThread
+    fun clearUserFirstName() {
+        userDao.delete(1)
+    }
 }
