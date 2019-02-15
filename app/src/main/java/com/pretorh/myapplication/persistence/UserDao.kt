@@ -1,11 +1,15 @@
 package com.pretorh.myapplication.persistence
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface UserDao {
     @Query("select * from users")
     fun getAll(): List<User>
+
+    @Query("select * from users where id = :id")
+    fun getUser(id: Int): LiveData<List<User>>
 
     @Insert
     fun insert(user: User)
