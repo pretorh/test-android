@@ -1,11 +1,12 @@
 package com.pretorh.myapplication
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import kotlin.random.Random
 
-class MainViewModel: ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
     val r = Random.nextInt(100, 140)
     val currentName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
