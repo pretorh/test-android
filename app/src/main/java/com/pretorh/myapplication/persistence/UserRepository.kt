@@ -12,7 +12,7 @@ class UserRepository(private val userDao: UserDao) {
         }
 
     @WorkerThread
-    suspend fun replace(user: User) {
-        userDao.insert(user)
+    fun setUserFirstName(firstName: String) {
+        userDao.insert(User(1, firstName))
     }
 }

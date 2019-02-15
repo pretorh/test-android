@@ -27,6 +27,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun setName(name: String) {
         currentName.value = name
+        executor.submit { repository.setUserFirstName(name) }
     }
 
     companion object {
