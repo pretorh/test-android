@@ -6,14 +6,18 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 fun buildDatabase(context: Context): MyDatabase {
-    val v2Upgrade = object : Migration(1, 2) {
-        override fun migrate(database: SupportSQLiteDatabase) {
-            database.execSQL("CREATE TABLE IF NOT EXISTS `dummy` (`id` INTEGER NOT NULL, PRIMARY KEY(`id`))")
-        }
-    }
+    val v2Upgrade = buildDbVersion2Upgrader()
 
     return Room
         .databaseBuilder(context, MyDatabase::class.java, "database-name")
         .addMigrations(v2Upgrade)
         .build()
+}
+
+fun buildDbVersion2Upgrader(): Migration {
+    return object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `dummy` (`id` INTEGER NOT NULL, PRIMARY KEY(`id`))")
+        }
+    }
 }
