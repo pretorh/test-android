@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "505228e34512b21bec836792ef72a538",
+    "identityHash": "6a1b158085a6c0bfc2090fccc84e2008",
     "entities": [
       {
         "tableName": "users",
@@ -31,7 +31,7 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Dummy",
+        "tableName": "dummy",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
@@ -54,7 +54,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"505228e34512b21bec836792ef72a538\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6a1b158085a6c0bfc2090fccc84e2008\")"
     ]
   }
 }

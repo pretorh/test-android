@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Query
 
-@Entity
+@Entity(tableName = "dummy")
 data class Dummy(@PrimaryKey val id: Int)
 
 @Dao

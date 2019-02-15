@@ -30,7 +30,7 @@ class MigrationTest {
         }
 
         // re open and run migration 1->2
-        db = helper.runMigrationsAndValidate(TEST_DB_NAME, 2, false, buildDbVersion2Upgrader())
+        db = helper.runMigrationsAndValidate(TEST_DB_NAME, 2, true, buildDbVersion2Upgrader())
 
         // check the data
         db.apply {
