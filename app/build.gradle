@@ -37,6 +37,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
 }
 
 dependencies {
@@ -54,7 +57,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
     testImplementation 'junit:junit:4.12'
-
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+    androidTestImplementation "androidx.room:room-testing:$room_version"
 }
