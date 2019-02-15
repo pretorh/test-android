@@ -14,12 +14,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val r = Random.nextInt(100, 140)
     val currentName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val firstName: LiveData<String>
-
     init {
         Log.d(TAG, "created MainViewModel, r=$r")
         val dao = (application as MyApplication).database.user()
         repository = UserRepository(dao)
         firstName = repository.getUserFirstName
+    }
+
+    fun setName(name: String) {
+        currentName.value = name
     }
 
     companion object {

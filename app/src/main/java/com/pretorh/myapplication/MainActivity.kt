@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         model.currentName.observe(this, Observer<String> { name -> textView2.text = name })
         btn_set_name.setOnClickListener {
             val name = editText.text.toString()
-            model.currentName.value = name
+            model.setName(name)
         }
 
         model.firstName.observe(this, Observer<String> { name -> textViewFirstNameFromRepository.text = name })
