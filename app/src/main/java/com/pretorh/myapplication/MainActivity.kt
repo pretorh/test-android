@@ -31,5 +31,7 @@ class MainActivity : AppCompatActivity() {
             val name = editText.text.toString()
             model.currentName.value = name
         }
+
+        model.firstName.observe(this, Observer<String> { name -> textViewFirstNameFromRepository.text = name })
     }
 }
