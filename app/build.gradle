@@ -22,6 +22,14 @@ android {
         versionCode getVersionCode()
         versionName getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation": "$projectDir/schemas".toString() // enable room schema files
+                ]
+            }
+        }
     }
     buildTypes {
         release {
