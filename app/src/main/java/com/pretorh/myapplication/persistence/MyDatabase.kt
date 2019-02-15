@@ -3,7 +3,9 @@ package com.pretorh.myapplication.persistence
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class], version = 1)
+@Database(version = 2, entities = [
+    User::class, Dummy::class
+])
 abstract class MyDatabase : RoomDatabase() {
     abstract fun user(): UserDao
 }
