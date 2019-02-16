@@ -23,7 +23,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         setup()
         Log.d(TAG, "created MainViewModel, r=$r")
         firstName = repository.getUserFirstName
-        repository.loadFromService()
+        loadFromNetwork()
     }
 
     override fun setupDependencies(injector: Injector) {
@@ -38,6 +38,8 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     fun clearFirstName() {
         async { repository.clearUserFirstName() }
     }
+
+    fun loadFromNetwork() = repository.loadFromService()
 
     companion object {
         val TAG: String by lazy { MainViewModel::class.java.simpleName }

@@ -2,4 +2,5 @@
     <string name="app_name">MyApplication</string>
     <string name="ok">ok</string>
     <string name="delete">delete</string>
+    <string name="load_from_placeholder_service">Load from Placeholder service</string>
 </resources>

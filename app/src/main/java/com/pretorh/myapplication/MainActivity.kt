@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         setTextViewFromSimpleModelField()
         setTextFieldFromLiveDataAndChangeOnButtonClicks()
+        setButtonToLoadFromNetwork()
     }
 
     private fun setTextViewFromSimpleModelField() {
@@ -35,5 +36,9 @@ class MainActivity : AppCompatActivity() {
         model.firstName.observe(this, Observer<String> { name -> textViewFirstNameFromRepository.text = name })
 
         button_delete.setOnClickListener { model.clearFirstName() }
+    }
+
+    private fun setButtonToLoadFromNetwork() {
+        button_load.setOnClickListener { model.loadFromNetwork() }
     }
 }
