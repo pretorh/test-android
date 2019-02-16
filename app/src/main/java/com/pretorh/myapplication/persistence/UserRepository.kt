@@ -28,7 +28,9 @@ class UserRepository(
             }
 
             override fun onResponse(call: Call<List<JsonUser>>, response: Response<List<JsonUser>>) {
-                // todo
+                val user = response.body()?.firstOrNull() ?: return
+
+                userDao.insert(User(1, user.username))
             }
         })
     }
