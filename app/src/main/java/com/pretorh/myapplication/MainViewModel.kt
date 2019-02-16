@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pretorh.myapplication.core.BaseViewModel
 import com.pretorh.myapplication.di.Injector
+import com.pretorh.myapplication.persistence.MyDatabase
 import com.pretorh.myapplication.persistence.UserRepository
 import java.util.concurrent.ExecutorService
 import javax.inject.Inject
@@ -17,6 +18,9 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     @Suppress("ProtectedInFinal")
     @Inject
     protected lateinit var executor: ExecutorService
+    @Suppress("ProtectedInFinal")
+    @Inject
+    protected lateinit var database: MyDatabase
 
     val r = Random.nextInt(100, 140)
     val currentName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
@@ -25,7 +29,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     init {
         setup()
         Log.d(TAG, "created MainViewModel, r=$r")
-        val dao = (application as MyApplication).database.user()
+        val dao = database.user()
         repository = UserRepository(dao)
         firstName = repository.getUserFirstName
     }
