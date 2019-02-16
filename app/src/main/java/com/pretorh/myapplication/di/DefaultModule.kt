@@ -18,11 +18,12 @@ class DefaultModule {
 
     @Provides
     @Singleton
-    fun retroFit(): Retrofit {
+    fun retroFit(executorService: ExecutorService): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://example.com")
             .client(buildOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
+            .callbackExecutor(executorService)
             .build()
     }
 
