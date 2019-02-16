@@ -23,6 +23,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         setup()
         Log.d(TAG, "created MainViewModel, r=$r")
         firstName = repository.getUserFirstName
+        repository.loadFromService()
     }
 
     override fun setupDependencies(injector: Injector) {
