@@ -58,6 +58,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.squareup.retrofit2:retrofit:2.5.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'

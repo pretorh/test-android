@@ -24,3 +24,5 @@ setup the injector in your `Application`'s `onCreate`
 
 make the class inherit from (or a subclass of) `AndroidViewModel`. Get the injector from the application,
 and use that to setup the view model
+
+## networking - retrofit2 (with okhttp3 for logging)
