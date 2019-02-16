@@ -7,14 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import com.pretorh.myapplication.core.BaseViewModel
 import com.pretorh.myapplication.di.Injector
 import com.pretorh.myapplication.persistence.UserRepository
-import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 import kotlin.random.Random
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
-    @Suppress("ProtectedInFinal")
-    @Inject
-    protected lateinit var executor: ExecutorService
     @Suppress("ProtectedInFinal")
     @Inject
     protected lateinit var repository: UserRepository
@@ -35,11 +31,11 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
 
     fun setName(name: String) {
         currentName.value = name
-        executor.submit { repository.setUserFirstName(name) }
+        async { repository.setUserFirstName(name) }
     }
 
     fun clearFirstName() {
-        executor.submit { repository.clearUserFirstName() }
+        async { repository.clearUserFirstName() }
     }
 
     companion object {
