@@ -19,3 +19,8 @@ Then build with `./gradlew assemble -PversionName=1.0.1 -PversionCode=2`
 build once. need dagger2 to generate `DaggerInjector` class
 
 setup the injector in your `Application`'s `onCreate`
+
+### di in view models
+
+make the class inherit from (or a subclass of) `AndroidViewModel`. Get the injector from the application,
+and use that to setup the view model

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pretorh.myapplication.core.BaseViewModel
+import com.pretorh.myapplication.di.Injector
 import com.pretorh.myapplication.persistence.UserRepository
 import java.util.concurrent.ExecutorService
 import kotlin.random.Random
@@ -18,11 +19,16 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     val firstName: LiveData<String>
 
     init {
+        setup()
         Log.d(TAG, "created MainViewModel, r=$r")
         val dao = (application as MyApplication).database.user()
         repository = UserRepository(dao)
         executor = application.ioExecutor
         firstName = repository.getUserFirstName
+    }
+
+    override fun setupDependencies(injector: Injector) {
+        injector.inject(this)
     }
 
     fun setName(name: String) {
