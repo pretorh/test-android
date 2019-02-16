@@ -5,6 +5,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Singleton
@@ -21,6 +22,7 @@ class DefaultModule {
         return Retrofit.Builder()
             .baseUrl("//")
             .client(buildOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 

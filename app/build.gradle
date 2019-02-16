@@ -46,6 +46,7 @@ dependencies {
     def lifecycle_version= '2.0.0'
     def room_version = "2.1.0-alpha04"
     def dagger_version = '2.16'
+    def retrofit_version = '2.5.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -58,7 +59,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    implementation "com.squareup.retrofit2:retrofit:2.5.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     testImplementation 'junit:junit:4.12'

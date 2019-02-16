@@ -28,3 +28,5 @@ and use that to setup the view model
 ## networking - retrofit2 (with okhttp3 for logging)
 
 build a custom okhttp3 client, and use that in the retrofit2 builder [logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+
+add gson converter for json parsing
