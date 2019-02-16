@@ -20,7 +20,7 @@ class DefaultModule {
     @Singleton
     fun retroFit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("//")
+            .baseUrl("https://example.com")
             .client(buildOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
