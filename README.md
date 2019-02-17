@@ -6,6 +6,12 @@ add a `getVersionCode` and `getVersionName` to `app/build.gradle`
 
 Then build with `./gradlew assemble -PversionName=1.0.1 -PversionCode=2`
 
+## flavors
+
+add `applicationIdSuffix` for debug builds
+
+add `values/strings.xml` with different application names per flavor/build type
+
 ## dependency injection - dagger2
 
 ### setup
