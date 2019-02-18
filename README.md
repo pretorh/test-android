@@ -38,3 +38,14 @@ build a custom okhttp3 client, and use that in the retrofit2 builder [logging in
 add gson converter for json parsing
 
 remember to add INTERNET permission
+
+## general
+
+### change activity into activity+fragment
+
+- inherit from `Fragment`
+- move layout creation into `onCreateView`
+- split other `onCreate` code into `onActivityCreated`
+- add companion object to create new instance of fragment
+- add layout for activity with just a `FrameLayout`
+- add activity that sets up `supportFragmentManager`
