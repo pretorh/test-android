@@ -21,6 +21,6 @@
     <fragment
         android:id="@+id/fragment2"
         android:name="com.pretorh.myapplication.Fragment2"
-        android:label="fragment_fragment2"
+        android:label="Fragment 2"
         tools:layout="@layout/fragment_fragment2" />
 </navigation>
