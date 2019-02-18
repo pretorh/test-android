@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_main_fragment.*
 
 class MainFragment : Fragment() {
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
         setTextViewFromSimpleModelField()
         setTextFieldFromLiveDataAndChangeOnButtonClicks()
         setButtonToLoadFromNetwork()
+        setupNavigation()
     }
 
     private fun setTextViewFromSimpleModelField() {
@@ -46,6 +48,10 @@ class MainFragment : Fragment() {
 
     private fun setButtonToLoadFromNetwork() {
         button_load.setOnClickListener { model.loadFromNetwork() }
+    }
+
+    private fun setupNavigation() {
+        button_navigate.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_fragment2))
     }
 
     companion object {
