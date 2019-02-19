@@ -16,11 +16,20 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" >
+            <argument
+                android:name="arg2"
+                android:defaultValue="123" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fragment2"
         android:name="com.pretorh.myapplication.Fragment2"
         android:label="Fragment 2"
-        tools:layout="@layout/fragment_fragment2" />
+        tools:layout="@layout/fragment_fragment2" >
+        <argument
+            android:name="arg2"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
