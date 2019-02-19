@@ -2,11 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- the id matching the action used to navigate from main fragment to 2 -->
+    <!-- since it is using the action id, arg2 gets the value specified on the action -->
     <item
         android:id="@id/action_mainFragment_to_fragment2"
         android:title="@string/navigate_to_2" />
 
     <!-- the id is the id for fragment 2 as in the nav graph -->
+    <!-- since it is using the destination id, arg2 gets the value specified on the destination -->
     <item
         android:id="@id/fragment2"
         android:title="@string/navigate_to_2" />
