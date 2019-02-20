@@ -21,7 +21,7 @@
                 android:name="arg2"
                 android:defaultValue="123" />
         </action>
-        <action android:id="@+id/action_to_fragment3" app:destination="@id/fragment3"/>
+        <action android:id="@+id/action_to_fragment3" app:destination="@id/navigation"/>
     </fragment>
     <fragment
         android:id="@+id/fragment2"
@@ -33,10 +33,23 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
-    <fragment android:id="@+id/fragment3" android:name="com.pretorh.myapplication.Fragment3"
-              android:label="fragment_fragment3" tools:layout="@layout/fragment_fragment3">
-        <action android:id="@+id/action_fragment3_to_fragment4" app:destination="@id/fragment4"/>
-    </fragment>
-    <fragment android:id="@+id/fragment4" android:name="com.pretorh.myapplication.Fragment4"
-              android:label="fragment_fragment4" tools:layout="@layout/fragment_fragment4"/>
+    <navigation
+        android:id="@+id/navigation"
+        android:label="Fragment 3 and 4"
+        app:startDestination="@id/fragment3">
+        <fragment
+            android:id="@+id/fragment3"
+            android:name="com.pretorh.myapplication.Fragment3"
+            android:label="fragment_fragment3"
+            tools:layout="@layout/fragment_fragment3">
+            <action
+                android:id="@+id/action_fragment3_to_fragment4"
+                app:destination="@id/fragment4" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragment4"
+            android:name="com.pretorh.myapplication.Fragment4"
+            android:label="fragment_fragment4"
+            tools:layout="@layout/fragment_fragment4" />
+    </navigation>
 </navigation>
