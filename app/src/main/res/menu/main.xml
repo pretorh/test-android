@@ -13,4 +13,9 @@
         android:id="@id/fragment2"
         android:title="@string/navigate_to_2" />
 
+    <!-- start to fragment 3 -->
+    <item
+        android:id="@id/action_to_fragment3"
+        android:title="@string/navigate_to_3" />
+
 </menu>
