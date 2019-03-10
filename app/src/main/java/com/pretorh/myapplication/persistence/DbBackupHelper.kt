@@ -8,16 +8,16 @@ import java.util.concurrent.ExecutorService
 class DbBackupHelper(private val database: MyDatabase, private val executorService: ExecutorService, private val root: File) {
     private val logTag by lazy { this.javaClass.simpleName }
     private val gson = Gson()
+    private val backupFile = File(root, "backup.json")
 
     fun backup() {
-        val backupFile = File(root, "backup.json")
         executorService.submit {
             val json = serializeAll()
-            writeToFile(backupFile, json)
+            writeToFile(json)
         }
     }
 
-    private fun writeToFile(backupFile: File, json: String) {
+    private fun writeToFile(json: String) {
         try {
             backupFile.parentFile.mkdirs()
             backupFile.writeText(json)
