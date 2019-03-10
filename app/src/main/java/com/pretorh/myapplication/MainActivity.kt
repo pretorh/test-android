@@ -9,13 +9,20 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.pretorh.myapplication.persistence.DbBackupHelper
 import kotlinx.android.synthetic.main.activity_main_activity.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    @Suppress("ProtectedInFinal")
+    @Inject
+    protected lateinit var dbBackupHelper: DbBackupHelper
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (application as MyApplication).injector.inject(this)
         setContentView(R.layout.activity_main_activity)
         setupActionBar()
         setupNavigation()
@@ -27,6 +34,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.restore_backup) {
+            dbBackupHelper.restore()
+            return true
+        }
+        if (item.itemId == R.id.create_backup) {
+            dbBackupHelper.backup()
+            return true
+        }
         return useTheNavControllerToNavigateBasedOnMenuItemId(item) || super.onOptionsItemSelected(item)
     }
 
