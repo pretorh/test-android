@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface JsonService {
-    @GET("http://jsonplaceholder.typicode.com/users")
+    @GET("https://jsonplaceholder.typicode.com/users")
     fun getAll(): Call<List<JsonUser>>
 }
 
