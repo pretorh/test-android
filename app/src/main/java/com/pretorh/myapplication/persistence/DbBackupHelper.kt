@@ -5,11 +5,11 @@ import com.google.gson.Gson
 import java.io.File
 import java.util.concurrent.ExecutorService
 
-class DbBackupHelper(private val database: MyDatabase, private val executorService: ExecutorService) {
+class DbBackupHelper(private val database: MyDatabase, private val executorService: ExecutorService, private val root: File) {
     private val logTag by lazy { this.javaClass.simpleName }
     private val gson = Gson()
 
-    fun backup(root: File) {
+    fun backup() {
         val backupFile = File(root, "backup.json")
         executorService.submit {
             val json = serializeAll()

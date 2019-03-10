@@ -20,7 +20,7 @@ class PersistenceModule(private val context: Context) {
     @Provides
     @Singleton
     fun dbBackupHelper(database: MyDatabase, executorService: ExecutorService): DbBackupHelper =
-        DbBackupHelper(database, executorService)
+        DbBackupHelper(database, executorService, context.filesDir)
 
     @Provides
     fun userRepository(database: MyDatabase, retrofit: Retrofit) =

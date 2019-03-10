@@ -19,7 +19,7 @@ class MyApplication : Application() {
         super.onCreate()
         injector = buildDependencyInjector()
         injector.inject(this)
-        dbBackupHelper.backup(filesDir)
+        dbBackupHelper.backup()
     }
 
     private fun buildDependencyInjector(): Injector {
