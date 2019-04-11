@@ -39,6 +39,13 @@ add gson converter for json parsing
 
 remember to add INTERNET permission
 
+## tests
+
+Add custom class that extends `androidx.test.runner.AndroidJUnitRunner`, override `newApplication` and save
+the application to a field
+
+Change the `android.testInstrumentationRunner` field to this class
+
 ## general
 
 ### change activity into activity+fragment

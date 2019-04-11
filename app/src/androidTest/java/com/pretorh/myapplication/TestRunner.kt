@@ -1,0 +1,19 @@
+package com.pretorh.myapplication
+
+import android.app.Application
+import android.content.Context
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.runner.AndroidJUnitRunner
+
+class TestRunner : AndroidJUnitRunner() {
+    private lateinit var application: MyApplication
+
+    override fun newApplication(cl: ClassLoader?, className: String?, context: Context?): Application {
+        application = super.newApplication(cl, className, context) as MyApplication
+        return application
+    }
+
+    companion object {
+        fun get() = InstrumentationRegistry.getInstrumentation() as TestRunner
+    }
+}
