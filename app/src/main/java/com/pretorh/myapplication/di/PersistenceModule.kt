@@ -10,10 +10,10 @@ import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
-class PersistenceModule(private val context: Context) {
+class PersistenceModule(private val myDatabase: MyDatabase) {
     @Provides
     @Singleton
-    fun database() = buildDatabase(context)
+    fun database(): MyDatabase = myDatabase
 
     @Provides
     fun userRepository(database: MyDatabase, retrofit: Retrofit) =
@@ -21,7 +21,7 @@ class PersistenceModule(private val context: Context) {
 
     companion object {
         fun build(context: Context): PersistenceModule {
-            return PersistenceModule(context)
+            return PersistenceModule(buildDatabase(context))
         }
     }
 }
