@@ -54,6 +54,13 @@ the application that builds given a passed-in persistence module.
 in the tests, build an in-memory database. use this database to build a persistence module for the tests,
 passing this module into the application's dependency builder function in the onStart function
 
+### cucumber/gherkin
+
+install https://github.com/cucumber/cucumber-android
+
+add class with `CucumberOptions`. this class must be in the same package as the test runner - so the application id
+might depend on the build flavor (if adding suffix to application id) and `.test`
+
 ## general
 
 ### change activity into activity+fragment
