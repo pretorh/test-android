@@ -12,6 +12,7 @@ class TestRunner : AndroidJUnitRunner() {
     override fun newApplication(cl: ClassLoader?, className: String?, context: Context?): Application {
         application = super.newApplication(cl, className, context) as MyApplication
         persistenceBuilder = InMemoryPersistenceBuilder(application)
+        application.buildDependencyInjector(persistenceBuilder.module())
         return application
     }
 
