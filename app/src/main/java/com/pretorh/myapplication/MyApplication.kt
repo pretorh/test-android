@@ -17,7 +17,7 @@ class MyApplication : Application() {
     private fun buildDependencyInjector(): Injector {
         return DaggerInjector.builder()
             .defaultModule(DefaultModule())
-            .persistenceModule(PersistenceModule(this))
+            .persistenceModule(PersistenceModule.build(this))
             .build()
     }
 }

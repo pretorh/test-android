@@ -18,4 +18,10 @@ class PersistenceModule(private val context: Context) {
     @Provides
     fun userRepository(database: MyDatabase, retrofit: Retrofit) =
         UserRepository(database.user(), retrofit)
+
+    companion object {
+        fun build(context: Context): PersistenceModule {
+            return PersistenceModule(context)
+        }
+    }
 }
