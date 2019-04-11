@@ -52,7 +52,7 @@ pass in the database into the persistence module. add a function (visible for te
 the application that builds given a passed-in persistence module.
 
 in the tests, build an in-memory database. use this database to build a persistence module for the tests,
-passing this module into the application's dependency builder function
+passing this module into the application's dependency builder function in the onStart function
 
 ## general
 

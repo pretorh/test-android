@@ -12,17 +12,17 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        injector = buildDependencyInjector()
+        buildDependencyInjector()
     }
 
-    private fun buildDependencyInjector(): Injector {
+    private fun buildDependencyInjector() {
         val persistenceModule = PersistenceModule.build(this)
-        return buildDependencyInjector(persistenceModule)
+        buildDependencyInjector(persistenceModule)
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    fun buildDependencyInjector(persistenceModule: PersistenceModule): Injector {
-        return DaggerInjector.builder()
+    fun buildDependencyInjector(persistenceModule: PersistenceModule) {
+        injector = DaggerInjector.builder()
             .defaultModule(DefaultModule())
             .persistenceModule(persistenceModule)
             .build()
