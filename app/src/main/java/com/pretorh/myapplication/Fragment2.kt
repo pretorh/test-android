@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,7 @@ class Fragment2 : Fragment() {
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
             .setAllowedOverRoaming(false)
             .setVisibleInDownloadsUi(true)
-        downloadManager.enqueue(request)
+        val id = downloadManager.enqueue(request)
+        Log.d("Download", "starting to download $uri as #$id")
     }
 }
