@@ -3,6 +3,7 @@ package com.pretorh.myapplication
 import android.app.DownloadManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,10 @@ class Fragment2 : Fragment() {
             .setDescription("Something to download")
             .setTitle("Test Android DownloadManager")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalFilesDir(nonNullContext, Environment.DIRECTORY_MOVIES, "my-test-downloads")
+            .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
+            .setAllowedOverRoaming(false)
+            .setVisibleInDownloadsUi(true)
         downloadManager.enqueue(request)
     }
 }
