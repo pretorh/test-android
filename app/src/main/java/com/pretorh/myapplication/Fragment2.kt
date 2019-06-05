@@ -15,5 +15,10 @@ class Fragment2 : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         text.text = arguments?.getInt("arg2").toString()
+
+        btn_download.setOnClickListener { startDownload() }
+    }
+
+    private fun startDownload() {
     }
 }
