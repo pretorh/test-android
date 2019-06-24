@@ -6,6 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
+import androidx.test.runner.screenshot.ScreenCaptureProcessor
 import androidx.test.runner.screenshot.Screenshot
 import org.junit.Test
 import java.util.*
@@ -27,5 +28,8 @@ class SimpleActivityTest {
             name = "screenshot${Date().time}"
             format = Bitmap.CompressFormat.PNG
         }
+
+        val set = hashSetOf<ScreenCaptureProcessor>(CustomScreenCaptureProcessor())
+        capture.process(set)
     }
 }
