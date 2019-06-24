@@ -8,7 +8,7 @@ import androidx.test.rule.ActivityTestRule
 import org.junit.Test
 
 class SimpleActivityTest {
-    private val activity = ActivityTestRule<MainActivity>(MainActivity::class.java, false, false)
+    private val activity = ActivityTestRule(MainActivity::class.java, false, false)
 
     @Test
     fun isLaunchable() {
