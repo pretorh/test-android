@@ -82,3 +82,7 @@ On subsequent reads, return null
 
 Add an observer extention to subscribe to these events, and fire a callback only when the data is read ([see this comment on gist](
 https://gist.github.com/JoseAlcerreca/e0bba240d9b3cffa258777f12e5c0ae9#gistcomment-2748514))
+
+See `SingleHandledListEvent` for a list of data, all of which should be handled. This class allows adding more items to the list (in a new event in order
+to ensure it is read/updated correctly) while still only allowing it to be read/handled once. Useful when all items should be handled, and not just the 
+last value (a periodic random number is used as example in the main fragment)

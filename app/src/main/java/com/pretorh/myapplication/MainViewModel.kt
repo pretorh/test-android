@@ -7,6 +7,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.pretorh.myapplication.core.BaseViewModel
 import com.pretorh.myapplication.core.SingleHandledEvent
+import com.pretorh.myapplication.core.SingleHandledListEvent
 import com.pretorh.myapplication.di.Injector
 import com.pretorh.myapplication.persistence.UserRepository
 import java.util.concurrent.Executors
@@ -24,6 +25,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     val firstName: LiveData<String>
     val firstNameEvent: MutableLiveData<SingleHandledEvent<String>>
     val randomNumberGenerator: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
+    val randomNumberEvents: MutableLiveData<SingleHandledListEvent<Int>> by lazy { MutableLiveData<SingleHandledListEvent<Int>>() }
 
     init {
         setup()
@@ -39,6 +41,10 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
                 val i = (Math.random() * 10).roundToInt()
                 Log.d("MainViewModel", "generated random number $i")
                 randomNumberGenerator.postValue(i)
+
+                val currentEvent = randomNumberEvents.value
+                val newEvent = SingleHandledListEvent.concat(currentEvent, listOf(i))
+                randomNumberEvents.postValue(newEvent)
             }
         }
         loadFromNetwork()
