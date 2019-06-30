@@ -61,6 +61,10 @@ class MainFragment : Fragment() {
             Log.d(TAG, message)
         })
 
+        model.randomNumberGenerator.observe(this, Observer<Int> {
+            Log.d(TAG, "observed random number $it")
+        })
+
         button_delete.setOnClickListener { model.clearFirstName() }
     }
 

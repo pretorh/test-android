@@ -9,7 +9,9 @@ import com.pretorh.myapplication.core.BaseViewModel
 import com.pretorh.myapplication.core.SingleHandledEvent
 import com.pretorh.myapplication.di.Injector
 import com.pretorh.myapplication.persistence.UserRepository
+import java.util.concurrent.Executors
 import javax.inject.Inject
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 class MainViewModel(application: Application) : BaseViewModel(application) {
@@ -21,6 +23,7 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     val currentName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val firstName: LiveData<String>
     val firstNameEvent: MutableLiveData<SingleHandledEvent<String>>
+    val randomNumberGenerator: MutableLiveData<Int> by lazy { MutableLiveData<Int>() }
 
     init {
         setup()
@@ -29,6 +32,14 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
         firstNameEvent = MediatorLiveData()
         firstNameEvent.addSource(repository.getUserFirstName) {
             firstNameEvent.value = SingleHandledEvent(it)
+        }
+        Executors.newSingleThreadExecutor().submit {
+            while (true) {
+                Thread.sleep(2500)
+                val i = (Math.random() * 10).roundToInt()
+                Log.d("MainViewModel", "generated random number $i")
+                randomNumberGenerator.postValue(i)
+            }
         }
         loadFromNetwork()
     }
