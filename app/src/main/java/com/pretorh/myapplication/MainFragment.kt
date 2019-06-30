@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
+import com.pretorh.myapplication.core.SingleHandledEvent
 import kotlinx.android.synthetic.main.activity_main_fragment.*
 
 class MainFragment : Fragment() {
@@ -50,6 +51,15 @@ class MainFragment : Fragment() {
                 Snackbar.make(textViewFirstNameFromRepository, message, Snackbar.LENGTH_SHORT).show()
             }
             Log.d(TAG, message)
+        })
+        model.firstNameEvent.observe(this, Observer<SingleHandledEvent<String>> { event ->
+            event.getIfNotHandled()?.let { name ->
+                val message = "Event observer: $name"
+                if (checkbox_enable_snackbar.isChecked) {
+                    Snackbar.make(textViewFirstNameFromRepository, message, Snackbar.LENGTH_SHORT).show()
+                }
+                Log.d(TAG, message)
+            }
         })
 
         button_delete.setOnClickListener { model.clearFirstName() }
