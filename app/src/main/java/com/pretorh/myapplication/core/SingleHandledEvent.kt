@@ -36,3 +36,7 @@ inline fun <T> LiveData<SingleHandledEvent<T>>.observeEvent(owner: LifecycleOwne
     // from https://gist.github.com/JoseAlcerreca/e0bba240d9b3cffa258777f12e5c0ae9#gistcomment-2748514
     observe(owner, Observer { event -> event?.getIfNotHandled()?.let(onEventUnhandledContent) })
 }
+
+inline fun <T> LiveData<SingleHandledListEvent<T>>.observeEventList(owner: LifecycleOwner, crossinline onEventUnhandledContent: (Collection<T>) -> Unit) {
+    observe(owner, Observer { event -> event.getIfNotHandled()?.let(onEventUnhandledContent) })
+}

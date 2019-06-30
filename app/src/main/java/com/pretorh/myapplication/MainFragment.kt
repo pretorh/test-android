@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
-import com.pretorh.myapplication.core.SingleHandledListEvent
 import com.pretorh.myapplication.core.observeEvent
+import com.pretorh.myapplication.core.observeEventList
 import kotlinx.android.synthetic.main.activity_main_fragment.*
 
 class MainFragment : Fragment() {
@@ -65,11 +65,9 @@ class MainFragment : Fragment() {
         model.randomNumberGenerator.observe(this, Observer<Int> {
             Log.d(TAG, "observed random number $it")
         })
-        model.randomNumberEvents.observe(this, Observer<SingleHandledListEvent<Int>> { event ->
-            event.getIfNotHandled()?.let {
-                val items = it.joinToString(",")
-                Log.d(TAG, "observed random numbers (list) $items")
-            }
+        model.randomNumberEvents.observeEventList(this, {
+            val items = it.joinToString(",")
+            Log.d(TAG, "observed random numbers (list) $items")
         })
 
         button_delete.setOnClickListener { model.clearFirstName() }
