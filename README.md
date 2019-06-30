@@ -79,3 +79,6 @@ see https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-o
 
 Create a class (`SingleHandledEvent`) that holds the data to return. When the data is read the first time, return it, and also mark the event as "handled".
 On subsequent reads, return null
+
+Add an observer extention to subscribe to these events, and fire a callback only when the data is read ([see this comment on gist](
+https://gist.github.com/JoseAlcerreca/e0bba240d9b3cffa258777f12e5c0ae9#gistcomment-2748514))
