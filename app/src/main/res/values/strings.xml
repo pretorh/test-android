@@ -9,4 +9,5 @@
     <string name="navigate_to_2">Navigate to 2</string>
     <string name="navigate_to_3">Navigate to fragment 3</string>
     <string name="download">Download</string>
+    <string name="setup_snackbar_for_first_name">Show snackbar for first name</string>
 </resources>

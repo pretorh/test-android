@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main_fragment.*
 
 class MainFragment : Fragment() {
@@ -42,6 +43,14 @@ class MainFragment : Fragment() {
         }
 
         model.firstName.observe(this, Observer<String> { name -> textViewFirstNameFromRepository.text = name })
+
+        model.firstName.observe(this, Observer<String> { name ->
+            val message = "String observer: $name"
+            if (checkbox_enable_snackbar.isChecked) {
+                Snackbar.make(textViewFirstNameFromRepository, message, Snackbar.LENGTH_SHORT).show()
+            }
+            Log.d(TAG, message)
+        })
 
         button_delete.setOnClickListener { model.clearFirstName() }
     }
