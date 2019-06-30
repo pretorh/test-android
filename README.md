@@ -70,3 +70,12 @@ Then save it to a file, using a custom processor (to change the destination, els
 - add companion object to create new instance of fragment
 - add layout for activity with just a `FrameLayout`
 - add activity that sets up `supportFragmentManager`
+
+### events in live data
+
+The problem: live data keeps old values, so observing on an already-setup live data will load the old values after the observer is setup
+
+see https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
+
+Create a class (`SingleHandledEvent`) that holds the data to return. When the data is read the first time, return it, and also mark the event as "handled".
+On subsequent reads, return null
