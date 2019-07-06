@@ -60,6 +60,15 @@ use `androidx.test.runner.screenshot.Screenshot.capture` to get the screenshot d
 
 Then save it to a file, using a custom processor (to change the destination, else you might get permission errors)
 
+### Async tasks (ex network requests, db loading)
+
+Add `AsyncTaskTracker` in production code, and track the start and completed events in (production) code
+
+Inject a test specific implementation of this, which uses a counter to track the number of tasks that should still complete
+
+Register this class as an idling resource, which causes espresso to wait for it to complete before continuing with assertions
+or actions.
+
 ## general
 
 ### change activity into activity+fragment
