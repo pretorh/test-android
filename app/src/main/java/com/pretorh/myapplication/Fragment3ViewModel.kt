@@ -42,10 +42,7 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
                 Thread.sleep(250)
                 liveData2.postValue("hello from Fragment3ViewModel.getText2 ($loops)")
                 loops += 1
-                if (loops == 1) {
-                    // only track as completed the first time (TODO: improve this)
-                    task.completed()
-                }
+                task.completed()
             }
         }
         return liveData2

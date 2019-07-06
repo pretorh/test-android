@@ -4,9 +4,19 @@ import android.util.Log
 import androidx.test.espresso.IdlingResource
 import com.pretorh.myapplication.core.AsyncTaskMethod
 import com.pretorh.myapplication.core.AsyncTaskTracker
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 
-class TestAsyncTaskMethod(task: AsyncTaskTracker) : AsyncTaskMethod(task)
+class TestAsyncTaskMethod(task: AsyncTaskTracker) : AsyncTaskMethod(task) {
+    private val pending = AtomicBoolean(true)
+
+    override fun completed() {
+        if (pending.getAndSet(false)) {
+            Log.d("AsyncTaskTracker", "async task method completed for first time")
+            super.completed()
+        }
+    }
+}
 
 class TestAsyncTaskTracker : AsyncTaskTracker(), IdlingResource {
     private var resourceCallback: IdlingResource.ResourceCallback? = null
