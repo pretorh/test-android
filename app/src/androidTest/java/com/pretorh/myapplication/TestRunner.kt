@@ -16,7 +16,7 @@ class TestRunner : AndroidJUnitRunner() {
     }
 
     override fun onStart() {
-        application.buildDependencyInjector(persistenceBuilder.module())
+        application.buildDependencyInjector(persistenceBuilder.module(), TestAsyncTaskTracker())
         super.onStart()
     }
 

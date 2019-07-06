@@ -18,11 +18,6 @@ class MyApplication : Application() {
 
     private fun buildDependencyInjector() {
         val persistenceModule = PersistenceModule.build(this)
-        buildDependencyInjector(persistenceModule)
-    }
-
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    fun buildDependencyInjector(persistenceModule: PersistenceModule) {
         buildDependencyInjector(persistenceModule, AsyncTaskTracker())
     }
 
