@@ -32,4 +32,15 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
         }
         return liveData
     }
+
+    fun getText2(): LiveData<String> {
+        val liveData2 = MutableLiveData<String>()
+        asyncTaskTracker.start()
+        Executors.newSingleThreadExecutor().submit {
+            Thread.sleep(250)
+            liveData2.postValue("hello from Fragment3ViewModel.getText2")
+            asyncTaskTracker.completed()
+        }
+        return liveData2
+    }
 }

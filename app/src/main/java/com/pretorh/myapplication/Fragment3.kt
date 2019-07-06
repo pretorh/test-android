@@ -28,5 +28,8 @@ class Fragment3 : Fragment() {
         viewModel.getText().observe(this, Observer { s ->
             text3.text = s
         })
+        viewModel.getText2().observe(this, Observer { s ->
+            text3_2.text = s
+        })
     }
 }
