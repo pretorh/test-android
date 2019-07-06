@@ -5,6 +5,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.rule.ActivityTestRule
+import org.hamcrest.CoreMatchers
 import org.junit.Test
 
 class Fragment3Tests {
@@ -14,6 +15,7 @@ class Fragment3Tests {
     fun canLaunchFragment() {
         launchToMainFragment()
         navigateToFragment3()
+        assertTextIsChanged()
     }
 
     private fun launchToMainFragment() {
@@ -26,6 +28,11 @@ class Fragment3Tests {
         Espresso.onView(ViewMatchers.withId(R.id.button_navigate3))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.text3))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    }
+
+    private fun assertTextIsChanged() {
+        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(R.id.text3), ViewMatchers.withText("hello from Fragment3ViewModel")))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 }
