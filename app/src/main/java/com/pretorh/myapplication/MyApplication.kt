@@ -2,6 +2,7 @@ package com.pretorh.myapplication
 
 import android.app.Application
 import androidx.annotation.VisibleForTesting
+import com.pretorh.myapplication.core.AsyncTaskTracker
 import com.pretorh.myapplication.di.DaggerInjector
 import com.pretorh.myapplication.di.DefaultModule
 import com.pretorh.myapplication.di.Injector
@@ -22,8 +23,13 @@ class MyApplication : Application() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun buildDependencyInjector(persistenceModule: PersistenceModule) {
+        buildDependencyInjector(persistenceModule, AsyncTaskTracker())
+    }
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun buildDependencyInjector(persistenceModule: PersistenceModule, asyncTaskTracker: AsyncTaskTracker) {
         injector = DaggerInjector.builder()
-            .defaultModule(DefaultModule())
+            .defaultModule(DefaultModule(asyncTaskTracker))
             .persistenceModule(persistenceModule)
             .build()
     }

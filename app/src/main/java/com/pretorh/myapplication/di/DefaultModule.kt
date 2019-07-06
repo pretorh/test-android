@@ -1,5 +1,6 @@
 package com.pretorh.myapplication.di
 
+import com.pretorh.myapplication.core.AsyncTaskTracker
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,7 +12,7 @@ import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module
-class DefaultModule {
+class DefaultModule(private val asyncTaskTracker: AsyncTaskTracker) {
     @Provides
     @Singleton
     fun ioExecutor(): ExecutorService = Executors.newSingleThreadExecutor()
@@ -26,6 +27,10 @@ class DefaultModule {
             .callbackExecutor(executorService)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideAsyncTaskTracker() = asyncTaskTracker
 
     private fun buildOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
