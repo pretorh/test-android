@@ -15,7 +15,7 @@ class Fragment3Tests {
     fun canLaunchFragment() {
         launchToMainFragment()
         navigateToFragment3()
-        // assertTextIsChanged()            // this fails, since the text is changed async
+        assertTextIsChanged()
     }
 
     private fun launchToMainFragment() {

@@ -27,7 +27,7 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
         asyncTaskTracker.start()
         Executors.newSingleThreadExecutor().submit {
             Thread.sleep(250)
-            liveData.value = "hello from Fragment3ViewModel"
+            liveData.postValue("hello from Fragment3ViewModel")
             asyncTaskTracker.completed()
         }
         return liveData
