@@ -2,8 +2,11 @@ package com.pretorh.myapplication
 
 import android.util.Log
 import androidx.test.espresso.IdlingResource
+import com.pretorh.myapplication.core.AsyncTaskMethod
 import com.pretorh.myapplication.core.AsyncTaskTracker
 import java.util.concurrent.atomic.AtomicInteger
+
+class TestAsyncTaskMethod(task: AsyncTaskTracker) : AsyncTaskMethod(task)
 
 class TestAsyncTaskTracker : AsyncTaskTracker(), IdlingResource {
     private var resourceCallback: IdlingResource.ResourceCallback? = null
@@ -12,6 +15,11 @@ class TestAsyncTaskTracker : AsyncTaskTracker(), IdlingResource {
     override fun start() {
         val pendingCount = pending.incrementAndGet()
         Log.d("AsyncTaskTracker", "started, pending count = $pendingCount")
+    }
+
+    override fun startWithMultipleComplete(): AsyncTaskMethod {
+        start()
+        return TestAsyncTaskMethod(this)
     }
 
     override fun completed() {
