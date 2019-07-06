@@ -24,9 +24,11 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
     }
 
     fun getText(): LiveData<String> {
+        asyncTaskTracker.start()
         Executors.newSingleThreadExecutor().submit {
             Thread.sleep(250)
             liveData.value = "hello from Fragment3ViewModel"
+            asyncTaskTracker.completed()
         }
         return liveData
     }
