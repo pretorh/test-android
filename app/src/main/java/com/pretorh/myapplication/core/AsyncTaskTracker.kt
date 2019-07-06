@@ -1,7 +1,7 @@
 package com.pretorh.myapplication.core
 
 open class AsyncTaskMethod(private val task: AsyncTaskTracker) {
-    open fun completed() {
+    open fun completedAgain() {
         task.completed()
     }
 }

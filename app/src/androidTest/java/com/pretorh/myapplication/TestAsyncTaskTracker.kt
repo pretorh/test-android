@@ -10,10 +10,10 @@ import java.util.concurrent.atomic.AtomicInteger
 class TestAsyncTaskMethod(task: AsyncTaskTracker) : AsyncTaskMethod(task) {
     private val pending = AtomicBoolean(true)
 
-    override fun completed() {
+    override fun completedAgain() {
         if (pending.getAndSet(false)) {
             Log.d("AsyncTaskTracker", "async task method completed for first time")
-            super.completed()
+            super.completedAgain()
         }
     }
 }

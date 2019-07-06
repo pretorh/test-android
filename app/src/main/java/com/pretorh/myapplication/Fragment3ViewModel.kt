@@ -42,7 +42,7 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
                 Thread.sleep(250)
                 liveData2.postValue("hello from Fragment3ViewModel.getText2 ($loops)")
                 loops += 1
-                task.completed()
+                task.completedAgain()
             }
         }
         return liveData2
