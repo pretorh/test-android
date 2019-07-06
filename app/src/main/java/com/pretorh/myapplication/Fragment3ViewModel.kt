@@ -37,9 +37,16 @@ class Fragment3ViewModel(application: Application) : BaseViewModel(application) 
         val liveData2 = MutableLiveData<String>()
         asyncTaskTracker.start()
         Executors.newSingleThreadExecutor().submit {
-            Thread.sleep(250)
-            liveData2.postValue("hello from Fragment3ViewModel.getText2")
-            asyncTaskTracker.completed()
+            var loops = 0
+            while (true) {
+                Thread.sleep(250)
+                liveData2.postValue("hello from Fragment3ViewModel.getText2 ($loops)")
+                loops += 1
+                if (loops == 1) {
+                    // only track as completed the first time (TODO: improve this)
+                    asyncTaskTracker.completed()
+                }
+            }
         }
         return liveData2
     }

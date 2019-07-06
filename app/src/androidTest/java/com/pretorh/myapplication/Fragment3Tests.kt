@@ -34,7 +34,7 @@ class Fragment3Tests {
     private fun assertTextIsChanged() {
         Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(R.id.text3), ViewMatchers.withText("hello from Fragment3ViewModel")))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(R.id.text3_2), ViewMatchers.withText("hello from Fragment3ViewModel.getText2")))
+        Espresso.onView(CoreMatchers.allOf(ViewMatchers.withId(R.id.text3_2), ViewMatchers.withText("hello from Fragment3ViewModel.getText2 (0)")))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 }
