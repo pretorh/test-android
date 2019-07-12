@@ -24,3 +24,43 @@ $ANDROID_HOME/tools/bin/avdmanager delete avd \
 ```
 
 the name is required
+
+### starting avd
+
+#### starting
+
+see https://developer.android.com/studio/run/emulator-commandline.html
+
+```
+$ANDROID_HOME/tools/emulator @avd-name -no-window
+```
+
+probably want to run that in the background
+
+meaning:
+
+- `-no-window` starts without a window
+
+#### wait for it to start up
+
+run this to block until the device is online
+
+```
+adb wait-for-any-device
+```
+
+or wait for this command to pass (and return "device")
+
+```
+adb get-state
+```
+
+#### stopping
+
+kill the qemu process:
+
+```
+kill $(pgrep qemu)
+```
+
+(can probably limit that to where the parent process is the emulator)
