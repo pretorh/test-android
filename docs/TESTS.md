@@ -60,7 +60,13 @@ adb get-state
 kill the qemu process:
 
 ```
-kill $(pgrep qemu)
+EMULATOR_PID=$(pgrep emulator)
+QEMU_PID=pgrep qemu -P $EMULATOR_PID
+kill $QEMU_PID
 ```
 
-(can probably limit that to where the parent process is the emulator)
+can wait for it to complete using
+
+```
+adb wait-for-any-disconnect
+```
