@@ -20,7 +20,7 @@ meanings:
 
 ```
 $ANDROID_HOME/tools/bin/avdmanager delete avd \
-    --name cli-avd
+    --name avd-name
 ```
 
 the name is required
@@ -35,7 +35,7 @@ see https://developer.android.com/studio/run/emulator-commandline.html
 $ANDROID_HOME/tools/emulator @avd-name -no-window
 ```
 
-probably want to run that in the background
+probably want to run that in the background job
 
 meaning:
 
