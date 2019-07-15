@@ -7,7 +7,7 @@
 ```
 echo no | $ANDROID_HOME/tools/bin/avdmanager create avd \
     --name avd-name \
-    --package 'system-images;android-21;google_apis;x86_64'
+    --package 'system-images;android-28;google_apis;x86'
 ```
 
 meanings:
@@ -15,6 +15,11 @@ meanings:
 - no to not use a custom hardware profile
 - requires name for the avd (`avd-name`)
 - requires a system package (contains `;` so must quote) run without this to see a list
+
+system image:
+
+might need to find an image that starts up with minimal/no additional required user input, for example Google Play enabled
+devices asks to enable play protect, blocking ui tests, and update software when first started
 
 ### deleting avd
 
