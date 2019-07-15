@@ -21,6 +21,16 @@ system image:
 might need to find an image that starts up with minimal/no additional required user input, for example Google Play enabled
 devices asks to enable play protect, blocking ui tests, and update software when first started
 
+#### configuring avd
+
+copy and modify a `config.ini` file from an existing avd's config (`~/.android/avd/avd-name.avd/config.ini`)
+
+see `docs/example-avd-config.ini` for example based on Pixel 3 without Google Play
+
+```
+cp docs/example-avd-config.ini ~/.android/avd/avd-name.avd/config.ini
+```
+
 ### deleting avd
 
 ```
