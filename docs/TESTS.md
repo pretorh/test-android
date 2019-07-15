@@ -32,8 +32,10 @@ the name is required
 see https://developer.android.com/studio/run/emulator-commandline.html
 
 ```
-$ANDROID_HOME/tools/emulator @avd-name -no-window
+$ANDROID_HOME/emulator/emulator @avd-name -no-window
 ```
+
+(`emulator/emulator`, not `tools/emulator`)
 
 probably want to run that in the background job
 

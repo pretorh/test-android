@@ -3,7 +3,7 @@ set -e
 
 name=${1?need avd name as the first parameter}
 
-"$ANDROID_HOME"/tools/emulator \
+"$ANDROID_HOME"/emulator/emulator \
   "@$name" \
   -no-window \
   >/dev/null &
