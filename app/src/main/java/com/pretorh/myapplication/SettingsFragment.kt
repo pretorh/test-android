@@ -4,9 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.util.Log
-import androidx.preference.EditTextPreference
-import androidx.preference.PreferenceDataStore
-import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.*
 
 class DataStore(context: Context) : PreferenceDataStore() {
     private val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
@@ -34,6 +32,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         useACustomDataStoreForAllPreferences()
         setPreferencesFromResource(R.xml.prefs, rootKey)
         setPreferenceToAcceptNumbersOnly()
+        setupSeekbarPreference()
+    }
+
+    private fun setupSeekbarPreference() {
+        val preference = findPreference<SeekBarPreference>("number2")
+        preference?.min = 1
+        preference?.max = 10
+        preference?.showSeekBarValue = true
     }
 
     private fun setPreferenceToAcceptNumbersOnly() {
