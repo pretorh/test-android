@@ -31,6 +31,11 @@
             app:key="number"
             app:title="Numbers only preference"
             app:useSimpleSummaryProvider="true"/>
+
+        <SeekBarPreference
+            app:key="number2"
+            app:title="int preference"
+            app:useSimpleSummaryProvider="true"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

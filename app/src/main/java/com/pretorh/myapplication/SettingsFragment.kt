@@ -18,6 +18,10 @@ class DataStore(context: Context) : PreferenceDataStore() {
     override fun putString(key: String?, value: String?) = prefs.edit().putString(key, value).apply()
 
     override fun getString(key: String?, defValue: String?): String? = prefs.getString(key, defValue)
+
+    override fun putInt(key: String?, value: Int) = prefs.edit().putInt(key, value).apply()
+
+    override fun getInt(key: String?, defValue: Int): Int = prefs.getInt(key, defValue)
 }
 
 class SettingsFragment : PreferenceFragmentCompat() {
