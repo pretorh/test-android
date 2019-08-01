@@ -3,6 +3,7 @@ package com.pretorh.myapplication
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
+import android.util.Log
 import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceDataStore
 import androidx.preference.PreferenceFragmentCompat
@@ -20,7 +21,12 @@ class DataStore(context: Context) : PreferenceDataStore() {
 }
 
 class SettingsFragment : PreferenceFragmentCompat() {
+    private lateinit var dataStore: DataStore
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        dataStore = DataStore(context!!)
+        Log.d("settings", "number as string = ${dataStore.getString("number", "0")}")
+
         useACustomDataStoreForAllPreferences()
         setPreferencesFromResource(R.xml.prefs, rootKey)
         findPreference<EditTextPreference?>("number")?.setOnBindEditTextListener { editText ->
@@ -29,6 +35,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun useACustomDataStoreForAllPreferences() {
-        preferenceManager.preferenceDataStore = DataStore(context!!)
+        preferenceManager.preferenceDataStore = dataStore
     }
 }
