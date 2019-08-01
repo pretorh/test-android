@@ -80,5 +80,6 @@ class MainFragment : Fragment() {
     private fun setupNavigation() {
         button_navigate.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_fragment2))
         button_navigate3.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_to_fragment3))
+        button_navigate_settings.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainFragment_to_settingsFragment))
     }
 }

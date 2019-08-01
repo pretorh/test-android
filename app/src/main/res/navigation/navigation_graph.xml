@@ -22,6 +22,9 @@
                 android:defaultValue="123" />
         </action>
         <action android:id="@+id/action_to_fragment3" app:destination="@id/sub_graph"/>
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragment2"
@@ -34,4 +37,9 @@
             android:defaultValue="0" />
     </fragment>
     <include app:graph="@navigation/sub_graph" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pretorh.myapplication.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
