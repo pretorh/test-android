@@ -29,7 +29,8 @@
 
         <EditTextPreference
             app:key="number"
-            app:title="Numbers only preference"/>
+            app:title="Numbers only preference"
+            app:useSimpleSummaryProvider="true"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
