@@ -29,6 +29,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         useACustomDataStoreForAllPreferences()
         setPreferencesFromResource(R.xml.prefs, rootKey)
+        setPreferenceToAcceptNumbersOnly()
+    }
+
+    private fun setPreferenceToAcceptNumbersOnly() {
         findPreference<EditTextPreference?>("number")?.setOnBindEditTextListener { editText ->
             editText.inputType = InputType.TYPE_CLASS_NUMBER
         }
