@@ -23,4 +23,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:key="other_category"
+        app:title="Other">
+
+        <EditTextPreference
+            app:key="number"
+            app:title="Numbers only preference"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>
